@@ -25,13 +25,13 @@ morse[4]="....-"; morse[5]="....."
 morse[6]="-...."; morse[7]="--..."
 morse[8]="---.."; morse[9]="----."
 
-# Türkçe karakterleri normalleştir
+# Normalize Turkish characters
 message=$(printf "%s" "$message" | sed 's/[çÇ]/c/g; s/[ğĞ]/g/g; s/[ıİ]/i/g; s/[İ]/I/g; s/[öÖ]/o/g; s/[şŞ]/s/g; s/[üÜ]/u/g')
 
-# Mesajı büyük harfe çevir
+# Convert the message to upper case
 msg_upper=$(echo "$message" | tr '[:lower:]' '[:upper:]')
 
-# Her karakteri titreştir
+# Vibrate each character
 for ((i=0; i<${#msg_upper}; i++)); do
     char="${msg_upper:$i:1}"
     code="${morse[$char]}"
